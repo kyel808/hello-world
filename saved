@@ -1,0 +1,51 @@
+# File Objects
+import re
+
+
+"""
+# kwargs r -> read, w -> write, r+ -> read and write
+with open('/Users/lennertwegner/Desktop/python scripts/Finanzproject/autorun.xml', 'r') as f:
+    # work with the file in the block
+    # autoclose file when exit the block
+
+    #f_contents = f.read()
+
+    # .readlines() reads all the lines with \n newline char for newline
+    # f_contents = f.readlines()
+    # print(f_contents)
+    
+    # store file in a variable ( with \n )
+    
+    lines = []
+    for line in f:
+        lines.append(line)
+
+    print(lines, end='')
+"""
+
+results = []
+linenum = 0
+substr = "openmodel"
+with open('/Users/lennertwegner/Desktop/python scripts/Git/autorun.xml', 'r') as f:
+    for line in f:
+        linenum += 1
+        if line.find(substr) != -1:
+            results.append("Line " + str(linenum) + ": " + line.rstrip('\n'))
+
+for findings in results:
+    print(findings)
+
+    # autoclose file when exit the block
+print(f.closed)
+
+# Alle files in einem Ordner finden
+import os
+for file in os.listdir("/mydir"):
+    if file.endswith(".ifc"):
+        print(os.path.join("/mydir", file))
+
+import os
+for root, dirs, files in os.walk("/mydir"):
+    for file in files:
+        if file.endswith(".ifc"):
+             print(os.path.join(root, file))
